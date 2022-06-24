@@ -3,10 +3,14 @@ package raccoltaDati;
 import java.util.Scanner;
 
 public class Registrazione {
- Scanner scan = new Scanner(System.in);
+	
+public static void main(String[] args) 
+{
+Scanner scan = new Scanner(System.in);
 	
 	
-	try {
+	try 
+	{
 		
 	      //richiesta nome
 		  System.out.print("Inserisci il tuo nome: ");
@@ -29,8 +33,30 @@ public class Registrazione {
 	      //richiesta email
 	      System.out.print("Inserisci la tua email: ");
 	      String email = scan.nextLine();
-		
-	}
+	      
+	      Utente creazioneUtente = new Utente(nome, cognome, email, password, eta);
+	      System.out.println(creazioneUtente);
+	      System.out.println("Grazie, per aver creato il tuo account");
+	      
+	      
+	}catch (NumberFormatException etaSbagliata) {
+	      System.out.println("impossibile completare la registrazione");
+	      System.out.println(etaSbagliata.getMessage());
+	    } 
 	
+	 catch (Exception e) {
+	      System.out.println("impossibile ocmpletare la registrazione");
+	      System.out.println(e.getMessage());
+	    }
+	
+	finally {
+	      // codice che deve essere eseguito sempre
+	      System.out.println("Arrivederci");
+	    }
 
+
+	    scan.close();
+
+	
+}
 }

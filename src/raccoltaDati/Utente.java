@@ -3,27 +3,15 @@ package raccoltaDati;
 public class Utente {
 	
 	//attributi
-	String nome,cognome,email,password;
-	int eta;
+	private String nome,cognome,email,password;
+	private int eta;
 	
 	
 	
 	//costruttore
 	public Utente(String nome, String cognome, String email, String password, int eta) throws Exception  {
 	
-		//metodi di validazione
-		if(eta < 18){
-		      throw new Exception("Km deve essere maggiore di 0");
-	    }
 		
-		 if ( !(email.contains("@")) || !(email.contains(".") )) {
-	            throw new Exception("La mail deve contenere un '@' e un '.'");
-		 
-		 }
-		 
-	     if (password.length()<8 || password.length()>12) {
-	        throw new Exception("La password deve contenere tra gli 8 e i 12 caratteri");
-	     }
 		
 		
 		
@@ -34,6 +22,11 @@ public class Utente {
 		this.email = email;
 		this.password = password;
 		this.eta = eta;
+		
+		
+		this.controlloEmail();
+		this.controlloPassword();
+		this.controlloEta();
 	}
 
 
@@ -96,6 +89,28 @@ public class Utente {
 		this.eta = eta;
 	}
 	
+	//metodo di stampa finale
+	public String toString() {
+		return "il tuo nome è: " + nome + " il tuo cognome è: " + cognome + " la tua età è: " + eta + 
+				" la tua email è: " + email + " la tua password è: " + password;
+	}
 	
+	public void controlloPassword() throws Exception {
+        if ( password.length()<8 || password.length()>12)
+            throw new Exception("La password deve contenere tra gli 8 e i 12 caratteri");
+       
+    }
+	
+	 public void controlloEmail() throws Exception {
+	        if ( !(email.contains("@")) || !(email.contains(".") ))
+	            throw new Exception(" La mail deve contenere un '@' e un '.'");
+	        
+	    }
+	
+	  public void controlloEta() throws Exception {
+	        if (eta<18)
+	            throw new Exception("Devi avere più di 18 anni");
+	    
+	    }
 	
 }
