@@ -8,7 +8,13 @@ public static void main(String[] args)
 {
 Scanner scan = new Scanner(System.in);
 	
+boolean flag= false;
 	
+
+	do 
+	{
+		
+
 	try 
 	{
 		
@@ -37,7 +43,7 @@ Scanner scan = new Scanner(System.in);
 	      Utente creazioneUtente = new Utente(nome, cognome, email, password, eta);
 	      System.out.println(creazioneUtente);
 	      System.out.println("Grazie, per aver creato il tuo account");
-	      
+	      flag = true;
 	      
 	}catch (NumberFormatException etaSbagliata) {
 	      System.out.println("impossibile completare la registrazione");
@@ -49,11 +55,12 @@ Scanner scan = new Scanner(System.in);
 	      System.out.println(e.getMessage());
 	    }
 	
-	finally {
-	      // codice che deve essere eseguito sempre
-	      System.out.println("Arrivederci");
-	    }
+	System.out.println("Per piacere inserisci i dati come richiesti");  
+	   
 
+	}while (!flag); 
+		    
+	
 
 	    scan.close();
 
